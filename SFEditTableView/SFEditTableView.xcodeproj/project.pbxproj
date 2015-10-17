@@ -14,6 +14,8 @@
 		5328CF4C1BCC068C00674192 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5328CF4B1BCC068C00674192 /* Images.xcassets */; };
 		5328CF4F1BCC068C00674192 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5328CF4D1BCC068C00674192 /* LaunchScreen.xib */; };
 		5328CF5B1BCC068C00674192 /* SFEditTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5328CF5A1BCC068C00674192 /* SFEditTableViewTests.m */; };
+		536937A81BD2A4EA002DF2C2 /* SFDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 536937A71BD2A4EA002DF2C2 /* SFDataTool.m */; settings = {ASSET_TAGS = (); }; };
+		536937AB1BD2AAAF002DF2C2 /* STPersonBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		5328CF541BCC068C00674192 /* SFEditTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFEditTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328CF591BCC068C00674192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5328CF5A1BCC068C00674192 /* SFEditTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFEditTableViewTests.m; sourceTree = "<group>"; };
+		536937A61BD2A4EA002DF2C2 /* SFDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataTool.h; sourceTree = "<group>"; };
+		536937A71BD2A4EA002DF2C2 /* SFDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDataTool.m; sourceTree = "<group>"; };
+		536937A91BD2AAAF002DF2C2 /* STPersonBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPersonBean.h; sourceTree = "<group>"; };
+		536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPersonBean.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 				5328CF4B1BCC068C00674192 /* Images.xcassets */,
 				5328CF4D1BCC068C00674192 /* LaunchScreen.xib */,
 				5328CF3E1BCC068C00674192 /* Supporting Files */,
+				536937A61BD2A4EA002DF2C2 /* SFDataTool.h */,
+				536937A71BD2A4EA002DF2C2 /* SFDataTool.m */,
+				536937A91BD2AAAF002DF2C2 /* STPersonBean.h */,
+				536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */,
 			);
 			path = SFEditTableView;
 			sourceTree = "<group>";
@@ -219,6 +229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536937A81BD2A4EA002DF2C2 /* SFDataTool.m in Sources */,
+				536937AB1BD2AAAF002DF2C2 /* STPersonBean.m in Sources */,
 				5328CF471BCC068C00674192 /* ViewController.m in Sources */,
 				5328CF441BCC068C00674192 /* AppDelegate.m in Sources */,
 				5328CF411BCC068C00674192 /* main.m in Sources */,
@@ -416,6 +428,7 @@
 				5328CF601BCC068C00674192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5328CF611BCC068C00674192 /* Build configuration list for PBXNativeTarget "SFEditTableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +437,7 @@
 				5328CF631BCC068C00674192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
