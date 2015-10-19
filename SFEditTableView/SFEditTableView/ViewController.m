@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "SFDataTool.h"
+#import "STEditTableViewCell.h"
+
+static NSString *cellIdentifier = @"STEditTableViewCell";
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _sfTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStylePlain];
+    [_sfTableView registerNib:[UINib nibWithNibName:cellIdentifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];
     _sfTableView.delegate = self;
     _sfTableView.dataSource = self;
     [self.view addSubview:_sfTableView];
@@ -50,7 +54,7 @@
 
 - (void)clickToEdit{
     _isEditMode = !_isEditMode;
-    [_sfTableView setEditing:_isEditMode animated:YES];
+    [_sfTableView setEditing:_isEditMode animated:NO];
 }
 
 #pragma mark - UITableViewDataSource
@@ -64,25 +68,24 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"SFTableCell";
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     
-    UITableViewCell *cell = [_sfTableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+//    [_sfTableView registerClass:[STEditTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    
+    STEditTableViewCell *cell = [_sfTableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                      reuseIdentifier:cellIdentifier];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     
-    NSInteger row = [indexPath row];
-    
     // Configure the cell...
+    if (_sfDataArray.count > indexPath.row) {
+        STPersonBean *personBean = [_sfDataArray objectAtIndex:indexPath.row];
+        [cell setCellDataWithBean:personBean];
+    }
     
-    STPersonBean *personBean = [_sfDataArray objectAtIndex:row];
-    
-    cell.detailTextLabel.text = personBean.sf_PersonDesc;
-    cell.textLabel.text = personBean.sf_PersonName;
     return cell;
 }
 

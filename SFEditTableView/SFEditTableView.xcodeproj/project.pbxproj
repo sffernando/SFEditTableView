@@ -16,6 +16,8 @@
 		5328CF5B1BCC068C00674192 /* SFEditTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5328CF5A1BCC068C00674192 /* SFEditTableViewTests.m */; };
 		536937A81BD2A4EA002DF2C2 /* SFDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 536937A71BD2A4EA002DF2C2 /* SFDataTool.m */; settings = {ASSET_TAGS = (); }; };
 		536937AB1BD2AAAF002DF2C2 /* STPersonBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */; settings = {ASSET_TAGS = (); }; };
+		53C2C3D51BD545C400096DD6 /* STEditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C2C3D31BD545C400096DD6 /* STEditTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		53C2C3D61BD545C400096DD6 /* STEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C2C3D41BD545C400096DD6 /* STEditTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		536937A71BD2A4EA002DF2C2 /* SFDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDataTool.m; sourceTree = "<group>"; };
 		536937A91BD2AAAF002DF2C2 /* STPersonBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPersonBean.h; sourceTree = "<group>"; };
 		536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPersonBean.m; sourceTree = "<group>"; };
+		53C2C3D21BD545C400096DD6 /* STEditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEditTableViewCell.h; sourceTree = "<group>"; };
+		53C2C3D31BD545C400096DD6 /* STEditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEditTableViewCell.m; sourceTree = "<group>"; };
+		53C2C3D41BD545C400096DD6 /* STEditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STEditTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +104,9 @@
 				536937A71BD2A4EA002DF2C2 /* SFDataTool.m */,
 				536937A91BD2AAAF002DF2C2 /* STPersonBean.h */,
 				536937AA1BD2AAAF002DF2C2 /* STPersonBean.m */,
+				53C2C3D21BD545C400096DD6 /* STEditTableViewCell.h */,
+				53C2C3D31BD545C400096DD6 /* STEditTableViewCell.m */,
+				53C2C3D41BD545C400096DD6 /* STEditTableViewCell.xib */,
 			);
 			path = SFEditTableView;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53C2C3D61BD545C400096DD6 /* STEditTableViewCell.xib in Resources */,
 				5328CF4A1BCC068C00674192 /* Main.storyboard in Resources */,
 				5328CF4F1BCC068C00674192 /* LaunchScreen.xib in Resources */,
 				5328CF4C1BCC068C00674192 /* Images.xcassets in Resources */,
@@ -229,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53C2C3D51BD545C400096DD6 /* STEditTableViewCell.m in Sources */,
 				536937A81BD2A4EA002DF2C2 /* SFDataTool.m in Sources */,
 				536937AB1BD2AAAF002DF2C2 /* STPersonBean.m in Sources */,
 				5328CF471BCC068C00674192 /* ViewController.m in Sources */,
