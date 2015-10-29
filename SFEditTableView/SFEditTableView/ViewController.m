@@ -71,6 +71,10 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
     return 60.0f;
 }
 
+//编辑的时候是否缩进
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    return NO;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
