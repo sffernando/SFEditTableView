@@ -29,7 +29,9 @@
 
 
 - (void)setCellDataWithBean:(STPersonBean *)bean{
-    [self.contentView setFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.00 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.contentView setFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+    });
     nameLabel.text = bean.sf_PersonName;
     descLabel.text = bean.sf_PersonDesc;
 }

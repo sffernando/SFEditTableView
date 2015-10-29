@@ -26,7 +26,7 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _sfTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStylePlain];
+    _sfTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64) style:UITableViewStyleGrouped];
     [_sfTableView registerNib:[UINib nibWithNibName:cellIdentifier bundle:[NSBundle mainBundle]] forCellReuseIdentifier:cellIdentifier];
     _sfTableView.delegate = self;
     _sfTableView.dataSource = self;
@@ -54,10 +54,15 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 
 - (void)clickToEdit{
     _isEditMode = !_isEditMode;
-    [_sfTableView setEditing:_isEditMode animated:NO];
+    [_sfTableView setEditing:_isEditMode animated:YES];
+    [_sfTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _sfDataArray.count;
 }
