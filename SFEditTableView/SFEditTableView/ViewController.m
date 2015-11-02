@@ -20,6 +20,7 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 @property (nonatomic, strong) NSMutableArray *sfDataArray;
 @property (nonatomic, strong) UIButton       *editBtn;
 @property (nonatomic, assign) BOOL           isEditMode;
+@property (nonatomic, strong) NSIndexPath *lastCanMoveIndex;
 
 @end
 
@@ -61,13 +62,18 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 
 - (void)clickToEdit{
     _isEditMode = !_isEditMode;
+    if (_isEditMode) {
+        [_editBtn setTitle:@"Done" forState:UIControlStateNormal];
+    }else{
+        [_editBtn setTitle:@"Edit" forState:UIControlStateNormal];
+    }
     [_sfTableView setEditing:_isEditMode animated:YES];
-    [_sfTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+//    [_sfTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -76,6 +82,17 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _sfTableView.frame.size.width, 34)];
+    headerView.font = [UIFont boldSystemFontOfSize:15];
+    headerView.text = [NSString stringWithFormat:@"   section %zd",section];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 34;
 }
 
 //编辑的时候是否缩进
@@ -117,14 +134,32 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
 - (UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleNone; // No Delete icon
     
-    
-    
 }
 
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section != 0) {
+        return NO;
+    }
+    return YES;
+}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Can move cell
+    if (indexPath.section != 0) {
+        return NO;
+    }
     return YES;
+}
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath{
+    if (proposedDestinationIndexPath.section != 0) {
+        
+        return self.lastCanMoveIndex == nil? sourceIndexPath:self.lastCanMoveIndex;
+    }
+    self.lastCanMoveIndex = proposedDestinationIndexPath;
+    return proposedDestinationIndexPath;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -141,6 +176,10 @@ static NSString *cellIdentifier = @"STEditTableViewCell";
     
     CGPoint location = [longPress locationInView:_sfTableView];
     NSIndexPath *indexPath = [_sfTableView indexPathForRowAtPoint:location];
+    
+    if (indexPath.section != 0) {
+        return;
+    }
     
     static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
     static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
